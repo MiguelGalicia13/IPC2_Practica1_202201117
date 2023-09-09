@@ -6,6 +6,8 @@ def configurar_tablero(fila_ingresar,columna_ingresar):
     print("Configuracion de tablero")
     print("==================================================\n")
     mi_tablero.inicializar_tablero(fila_ingresar,columna_ingresar)
+    mi_tablero.filas=fila_ingresar
+    mi_tablero.columnas=columna_ingresar
     mi_tablero.recorrer()
     print("\n==================================================")
     print("Configuracion de piezas")
@@ -14,11 +16,47 @@ def configurar_tablero(fila_ingresar,columna_ingresar):
     while nueva_pieza:
         fila=int(input("Ingrese la fila de la pieza: \n"))
         columna=int(input("Ingrese la columna de la pieza: \n"))
+        print("==================================================")
+        print("Colores Disponibles")
+        print("==================================================")
+        print("A. azul")
+        print("R. rojo")
+        print("V. verde")
+        print("P. purpura")
+        print("N. naranja")
         color=input("Ingrese el color de la pieza: \n")
-        mi_tablero.actualizar_pieza(fila,columna,color)
+        color=color.upper()
+        color_seleccionado=True
+        while color_seleccionado:
+            match color:
+                case "A":
+                    mi_tablero.actualizar_pieza(fila,columna,"azul")
+                    color_seleccionado=False
+                    break
+                case "R":
+                    mi_tablero.actualizar_pieza(fila,columna,"rojo")
+                    color_seleccionado=False
+                    break
+                case "V": 
+                    mi_tablero.actualizar_pieza(fila,columna,"verde")
+                    color_seleccionado=False
+                    break
+                case "P":
+                    mi_tablero.actualizar_pieza(fila,columna,"purpura")
+                    color_seleccionado=False
+                    break
+                case "N":
+                    mi_tablero.actualizar_pieza(fila,columna,"naranja")
+                    color_seleccionado=False
+                    break
+                case _:
+                    color=input("Color invalido! intente nuevamete: \n")
+                    break
+        
         print("")
         mi_tablero.imprimir_tablero_en_consola()
         seguir=input("\n Desea ingresar otra pieza? (s/n) \n")
+        seguir=seguir.lower()
         if seguir=="n":
             nueva_pieza=False
     print("Fin de la configuracion de piezas")
