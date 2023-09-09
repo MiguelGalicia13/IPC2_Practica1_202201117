@@ -67,5 +67,21 @@ class lista_piezas:
             print("")
         print("")
     def generar_garfica(self):
-        archivo = open("IPC2_Practica1_202201117/tablero.dot","w")
-        txt="diagraph G{\n node [shape=plaintext];\n label=\n \"Tablero\";\n table border='0' cellborder='1' color='black' cellspacing='0'>\n"
+        f = open('IPC2_Practica1_202201117/aa.dot','w')
+        texto="digraph G {\nnode [shape=circle];\nlabel=\"Colorealo GuateMatel\";\nsome_node [\nlabel=<\n<table border=\"0\" cellborder=\"1\" cellspacing=\"1\" width=\"100%\" height=\"100%\">\n"
+        texto+="<tr>\n"
+        for a in range(0, self.columnas + 1):
+            texto+="<td bgcolor=\"yellow\" width=\"10\" height=\"10\" >"+str(a)+"</td>\n"
+        texto+="</tr>\n"
+        for i in range(1, self.filas + 1):
+            texto+="<tr>\n"
+            texto+="<td bgcolor=\"yellow\" width=\"10\" height=\"10\" >"+str(i)+"</td>\n"
+            for j in range(1, self.columnas + 1):
+                texto+="<td bgcolor=\""+self.devolver_color_de_pieza(i,j)+"\" width=\"10\" height=\"10\">"+"</td>\n"
+            texto+="</tr>\n"
+        texto+="</table>>\n];\n}"
+        f.write(texto)
+        f.close()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+        os.system('dot -Tpng IPC2_Practica1_202201117/aa.dot -o IPC2_Practica1_202201117/Tablero.png')
+        print("Se ha generado la Grafica")

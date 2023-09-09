@@ -30,23 +30,23 @@ def configurar_tablero(fila_ingresar,columna_ingresar):
         while color_seleccionado:
             match color:
                 case "A":
-                    mi_tablero.actualizar_pieza(fila,columna,"azul")
+                    mi_tablero.actualizar_pieza(fila,columna,"blue")
                     color_seleccionado=False
                     break
                 case "R":
-                    mi_tablero.actualizar_pieza(fila,columna,"rojo")
+                    mi_tablero.actualizar_pieza(fila,columna,"red")
                     color_seleccionado=False
                     break
                 case "V": 
-                    mi_tablero.actualizar_pieza(fila,columna,"verde")
+                    mi_tablero.actualizar_pieza(fila,columna,"green")
                     color_seleccionado=False
                     break
                 case "P":
-                    mi_tablero.actualizar_pieza(fila,columna,"purpura")
+                    mi_tablero.actualizar_pieza(fila,columna,"purple")
                     color_seleccionado=False
                     break
                 case "N":
-                    mi_tablero.actualizar_pieza(fila,columna,"naranja")
+                    mi_tablero.actualizar_pieza(fila,columna,"orange")
                     color_seleccionado=False
                     break
                 case _:
@@ -64,6 +64,7 @@ def configurar_tablero(fila_ingresar,columna_ingresar):
     print("\n==================================================")
     print("Fin de la configuracion de tablero")
     print("==================================================\n")
+    mi_tablero.generar_garfica()
 
 def menu():
     print("\n")
@@ -98,7 +99,7 @@ def menu():
             case "3":
                 break
             case _:
-                print("Opcion invalida")
+                print("Opcion invalida, intente de nuevo")
                 menu()
         return False
     
